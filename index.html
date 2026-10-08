@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رحلة الجرادية إلى الفضاء 🚀</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Tahoma,Arial,sans-serif;
+  background:#02041a;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* ===== النجوم ===== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background-image:
+    radial-gradient(circle,white 1px,transparent 1.5px),
+    radial-gradient(circle,#8bbcff 1px,transparent 1.5px),
+    radial-gradient(circle,#fff 1px,transparent 1.5px);
+  background-size:130px 130px,190px 190px,240px 240px;
+  background-position:10px 20px,50px 80px,100px 30px;
+  animation:stars 20s linear infinite;
+}
+
+@keyframes stars{
+  from{
+    transform:translateY(0);
+  }
+  to{
+    transform:translateY(130px);
+  }
+}
+
+/* ===== البداية ===== */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:30px 20px;
+  position:relative;
+  background:
+    radial-gradient(circle at 50% 45%,
+    rgba(45,91,190,.65),
+    rgba(9,13,55,.8) 35%,
+    #02041a 75%);
+}
+
+.school{
+  padding:12px 28px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.08);
+  border-radius:50px;
+  backdrop-filter:blur(10px);
+  font-size:18px;
+  margin-bottom:20px;
+}
+
+.rocket{
+  font-size:100px;
+  animation:rocket 3s ease-in-out infinite;
+  filter:drop-shadow(0 0 25px #5db8ff);
+}
+
+@keyframes rocket{
+  0%,100%{
+    transform:translateY(0) rotate(-5deg);
+  }
+  50%{
+    transform:translateY(-25px) rotate(5deg);
+  }
+}
+
+.hero h1{
+  font-size:clamp(40px,8vw,80px);
+  margin:20px 0;
+  background:linear-gradient(90deg,#fff,#7ccfff,#a88cff);
+  -webkit-background-clip:text;
+  color:transparent;
+  text-shadow:0 0 30px rgba(85,160,255,.3);
+}
+
+.hero p{
+  max-width:750px;
+  font-size:21px;
+  line-height:2;
+  color:#dce7ff;
+}
+
+.start{
+  margin-top:30px;
+  padding:16px 40px;
+  border:none;
+  border-radius:50px;
+  background:linear-gradient(90deg,#694cff,#00bfff);
+  color:white;
+  font-size:19px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 0 30px rgba(65,150,255,.45);
+  transition:.3s;
+}
+
+.start:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 45px rgba(65,150,255,.7);
+}
+
+/* ===== الأقسام ===== */
+section{
+  padding:90px 7%;
+}
+
+.title{
+  text-align:center;
+  font-size:42px;
+  margin-bottom:50px;
+  color:#c7e3ff;
+  text-shadow:0 0 20px rgba(90,170,255,.4);
+}
+
+/* ===== الكواكب ===== */
+.planets{
+  max-width:1150px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+.card{
+  padding:30px 20px;
+  text-align:center;
+  border-radius:28px;
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.10),
+    rgba(255,255,255,.035)
+  );
+  border:1px solid rgba(255,255,255,.15);
+  backdrop-filter:blur(12px);
+  transition:.4s;
+}
+
+.card:hover{
+  transform:translateY(-12px) scale(1.03);
+  border-color:#6dbdff;
+  box-shadow:0 15px 50px rgba(40,120,255,.25);
+}
+
+.planet{
+  font-size:75px;
+  margin-bottom:15px;
+  filter:drop-shadow(0 0 12px rgba(255,255,255,.3));
+}
+
+.card h3{
+  font-size:26px;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:#d0dcf5;
+  line-height:1.9;
+}
+
+/* ===== مراحل الرحلة ===== */
+.journey{
+  max-width:900px;
+  margin:auto;
+}
+
+.step{
+  display:flex;
+  align-items:center;
+  gap:25px;
+  padding:25px;
+  margin:22px 0;
+  border-radius:25px;
+  background:rgba(255,255,255,.07);
+  border-right:5px solid #58b6ff;
+  transition:.3s;
+}
+
+.step:hover{
+  transform:translateX(-8px);
+  background:rgba(80,150,255,.12);
+}
+
+.number{
+  min-width:65px;
+  height:65px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#694cff,#00bfff);
+  font-size:25px;
+  font-weight:bold;
+  box-shadow:0 0 25px rgba(80,150,255,.3);
+}
+
+.step p{
+  color:#dce7ff;
+  line-height:1.9;
+  font-size:18px;
+}
+
+/* ===== الاختبار ===== */
+.quiz{
+  max-width:850px;
+  margin:auto;
+}
+
+.question{
+  padding:27px;
+  margin-bottom:22px;
+  border-radius:25px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+  transition:.3s;
+}
+
+.question:hover{
+  border-color:rgba(100,180,255,.4);
+}
+
+.question h3{
+  font-size:21px;
+  margin-bottom:18px;
+  color:#fff;
+}
+
+.option{
+  display:block;
+  padding:14px 16px;
+  margin:9px 0;
+  border-radius:15px;
+  background:rgba(255,255,255,.06);
+  cursor:pointer;
+  transition:.25s;
+  color:#dce7ff;
+}
+
+.option:hover{
+  background:rgba(75,155,255,.2);
+  transform:translateX(-4px);
+}
+
+.option input{
+  margin-left:10px;
+  accent-color:#5db8ff;
+}
+
+.quiz .start{
+  display:block;
+  margin:35px auto 0;
+}
+
+.result{
+  text-align:center;
+  margin-top:30px;
+  padding:25px;
+  border-radius:25px;
+  background:rgba(70,150,255,.1);
+  color:#9cddff;
+  font-size:24px;
+  line-height:2;
+}
+
+/* ===== رسالة الرحلة ===== */
+.message{
+  max-width:950px;
+  margin:auto;
+  padding:60px 35px;
+  text-align:center;
+  border-radius:35px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(80,150,255,.15),
+      rgba(130,70,255,.15)
+    );
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:0 0 50px rgba(50,100,255,.08);
+}
+
+.message h2{
+  font-size:38px;
+  margin-bottom:25px;
+}
+
+.message p{
+  font-size:21px;
+  line-height:2.2;
+  color:#dce7ff;
+}
+
+/* ===== الفوتر ===== */
+footer{
+  text-align:center;
+  padding:75px 20px;
+  background:#010212;
+  border-top:1px solid rgba(255,255,255,.12);
+}
+
+footer .flag{
+  font-size:38px;
+  margin-bottom:25px;
+}
+
+footer p{
+  font-size:19px;
+  margin:12px 0;
+  color:#dce7ff;
+}
+
+footer h2{
+  font-size:28px;
+  color:#9bdcff;
+  margin:12px 0 25px;
+}
+
+footer h3{
+  font-size:25px;
+  color:white;
+  margin:10px 0 25px;
+}
+
+/* ===== الجوال ===== */
+@media(max-width:600px){
+
+  section{
+    padding:65px 18px;
+  }
+
+  .hero{
+    min-height:100svh;
+  }
+
+  .hero h1{
+    font-size:43px;
+  }
+
+  .hero p{
+    font-size:17px;
+  }
+
+  .rocket{
+    font-size:75px;
+  }
+
+  .title{
+    font-size:31px;
+  }
+
+  .step{
+    align-items:flex-start;
+  }
+
+  .number{
+    min-width:55px;
+    height:55px;
+  }
+
+  .question h3{
+    font-size:18px;
+  }
+
+  footer h2{
+    font-size:22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= البداية ================= -->
+
+<header class="hero">
+
+  <div class="school">
+    🏫 متوسطة وثانوية الجرادية
+  </div>
+
+  <div class="rocket">
+    🚀
+  </div>
+
+  <h1>
+    رحلة الجرادية إلى الفضاء
+  </h1>
+
+  <p>
+    استعدوا لخوض رحلة ممتعة بين الكواكب والنجوم،
+    واكتشفوا أسرار الفضاء بطريقة تفاعلية وممتعة 🌌✨
+  </p>
+
+  <button class="start" onclick="startJourney()">
+    🚀 ابدأ الرحلة
+  </button>
+
+</header>
+
+
+<!-- ================= الكواكب ================= -->
+
+<section id="journey">
+
+  <h2 class="title">
+    🌌 اكتشفي عالم الفضاء
+  </h2>
+
+  <div class="planets">
+
+    <div class="card">
+      <div class="planet">☀️</div>
+      <h3>الشمس</h3>
+      <p>
+        نجم ضخم يقع في مركز المجموعة الشمسية،
+        وهو مصدر الضوء والحرارة للأرض.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="planet">🌍</div>
+      <h3>الأرض</h3>
+      <p>
+        كوكبنا الجميل، وهو الكوكب المعروف
+        بوجود الماء والحياة عليه.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="planet">🔴</div>
+      <h3>المريخ</h3>
+      <p>
+        يُعرف بالكوكب الأحمر بسبب لون سطحه
+        الناتج عن وجود الحديد.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="planet">🪐</div>
+      <h3>زحل</h3>
+      <p>
+        يتميز بحلقاته الرائعة التي تتكون
+        من الجليد والصخور والغبار.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="planet">🔵</div>
+      <h3>نبتون</h3>
+      <p>
+        كوكب أزرق بعيد يتميز برياح شديدة
+        وسرعة دوران كبيرة.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="planet">🌙</div>
+      <h3>القمر</h3>
+      <p>
+        القمر هو القمر الطبيعي للأرض،
+        ويدور حولها باستمرار.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= مراحل الرحلة ================= -->
+
+<section>
+
+  <h2 class="title">
+    🚀 مراحل الرحلة
+  </h2>
+
+  <div class="journey">
+
+    <div class="step">
+      <div class="number">١</div>
+      <p>
+        نبدأ رحلتنا من كوكب الأرض ونستعد
+        للانطلاق نحو الفضاء.
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="number">٢</div>
+      <p>
+        نمر بالقرب من القمر ونكتشف
+        أسراره ومراحله.
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="number">٣</div>
+      <p>
+        نواصل الرحلة بين الكواكب ونتعرف
+        على خصائص كل كوكب.
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="number">٤</div>
+      <p>
+        نصل إلى أعماق المجموعة الشمسية
+        ونكتشف عالمًا مليئًا بالعجائب.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= الاختبار ================= -->
+
+<section>
+
+  <h2 class="title">
+    🧠 اختبر معلوماتك في الفضاء
+  </h2>
+
+  <div class="quiz">
+
+    <!-- 1 -->
+    <div class="question">
+      <h3>١. ما الكوكب المعروف بالكوكب الأحمر؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q1" value="wrong">
+        الأرض 🌍
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q1" value="correct">
+        المريخ 🔴
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q1" value="wrong">
+        زحل 🪐
+      </label>
+    </div>
+
+
+    <!-- 2 -->
+    <div class="question">
+      <h3>٢. ما النجم الموجود في مركز المجموعة الشمسية؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q2" value="correct">
+        الشمس ☀️
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q2" value="wrong">
+        القمر 🌙
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q2" value="wrong">
+        الأرض 🌍
+      </label>
+    </div>
+
+
+    <!-- 3 -->
+    <div class="question">
+      <h3>٣. أي كوكب يتميز بحلقاته الشهيرة؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q3" value="wrong">
+        المريخ 🔴
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q3" value="correct">
+        زحل 🪐
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q3" value="wrong">
+        نبتون 🔵
+      </label>
+    </div>
+
+
+    <!-- 4 -->
+    <div class="question">
+      <h3>٤. ما القمر الطبيعي للأرض؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q4" value="correct">
+        القمر 🌙
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q4" value="wrong">
+        الشمس ☀️
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q4" value="wrong">
+        زحل 🪐
+      </label>
+    </div>
+
+
+    <!-- 5 -->
+    <div class="question">
+      <h3>٥. ما أكبر كواكب المجموعة الشمسية؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q5" value="correct">
+        المشتري 🟠
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q5" value="wrong">
+        الأرض 🌍
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q5" value="wrong">
+        عطارد ☿️
+      </label>
+    </div>
+
+
+    <!-- 6 -->
+    <div class="question">
+      <h3>٦. ما الكوكب الأقرب إلى الشمس؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q6" value="correct">
+        عطارد ☿️
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q6" value="wrong">
+        الأرض 🌍
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q6" value="wrong">
+        المريخ 🔴
+      </label>
+    </div>
+
+
+    <!-- 7 -->
+    <div class="question">
+      <h3>٧. ما الكوكب الذي نعيش عليه؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q7" value="wrong">
+        الزهرة 🟡
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q7" value="correct">
+        الأرض 🌍
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q7" value="wrong">
+        نبتون 🔵
+      </label>
+    </div>
+
+
+    <!-- 8 -->
+    <div class="question">
+      <h3>٨. ما أبعد كوكب عن الشمس؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q8" value="wrong">
+        زحل 🪐
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q8" value="correct">
+        نبتون 🔵
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q8" value="wrong">
+        المشتري 🟠
+      </label>
+    </div>
+
+
+    <!-- 9 -->
+    <div class="question">
+      <h3>٩. ما القوة التي تجعل الكواكب تدور حول الشمس؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q9" value="correct">
+        الجاذبية 🌀
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q9" value="wrong">
+        الضوء 💡
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q9" value="wrong">
+        الصوت 🔊
+      </label>
+    </div>
+
+
+    <!-- 10 -->
+    <div class="question">
+      <h3>١٠. ماذا يسمى الشخص الذي يسافر إلى الفضاء؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q10" value="wrong">
+        عالم البحار 🌊
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q10" value="correct">
+        رائد فضاء 👩‍🚀
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q10" value="wrong">
+        طيار ✈️
+      </label>
+    </div>
+
+
+    <!-- 11 -->
+    <div class="question">
+      <h3>١١. ما اسم المجرة التي توجد فيها مجموعتنا الشمسية؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q11" value="correct">
+        درب التبانة 🌌
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q11" value="wrong">
+        أندروميدا 🌠
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q11" value="wrong">
+        مجرة المرأة المسلسلة فقط ⭐
+      </label>
+    </div>
+
+
+    <!-- 12 -->
+    <div class="question">
+      <h3>١٢. كم عدد كواكب المجموعة الشمسية؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q12" value="wrong">
+        ٧ كواكب
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q12" value="correct">
+        ٨ كواكب
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q12" value="wrong">
+        ٩ كواكب
+      </label>
+    </div>
+
+
+    <!-- 13 -->
+    <div class="question">
+      <h3>١٣. أي كوكب يُعرف بأنه أكثر الكواكب حرارة؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q13" value="wrong">
+        عطارد ☿️
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q13" value="correct">
+        الزهرة 🟡
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q13" value="wrong">
+        المريخ 🔴
+      </label>
+    </div>
+
+
+    <!-- 14 -->
+    <div class="question">
+      <h3>١٤. ما الجهاز الذي يستخدمه العلماء لرؤية الأجرام البعيدة؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q14" value="correct">
+        التلسكوب 🔭
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q14" value="wrong">
+        المجهر 🔬
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q14" value="wrong">
+        البوصلة 🧭
+      </label>
+    </div>
+
+
+    <!-- 15 -->
+    <div class="question">
+      <h3>١٥. ما الذي يدور حول الأرض؟</h3>
+
+      <label class="option">
+        <input type="radio" name="q15" value="correct">
+        القمر 🌙
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q15" value="wrong">
+        الشمس ☀️
+      </label>
+
+      <label class="option">
+        <input type="radio" name="q15" value="wrong">
+        المريخ 🔴
+      </label>
+    </div>
+
+
+    <button class="start" onclick="checkQuiz()">
+      ✨ احسب نتيجتي
+    </button>
+
+    <div class="result" id="result"></div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= الرسالة ================= -->
+
+<section>
+
+  <div class="message">
+
+    <h2>🌟 رسالة الرحلة</h2>
+
+    <p>
+      الفضاء عالم واسع مليء بالأسرار والعجائب،
+      وكل اكتشاف يبدأ بسؤال وفضول.
+      فلنستمر في التعلم والاستكشاف،
+      ولنصل بطموحنا إلى أبعد النجوم 🚀🌌
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= النهاية ================= -->
+
+<footer>
+
+  <div class="flag">
+    🇸🇦 🚀 🇸🇦
+  </div>
+
+  <p>
+    من تصميم الطالبة
+  </p>
+
+  <h2>
+    🌟 الجوهرة علي إبراهيم حسن شعبي 🌟
+  </h2>
+
+  <p>
+    تحت إشراف المعلمة
+  </p>
+
+  <h3>
+    عائشة نجمي
+  </h3>
+
+  <p>
+    فريق صُنّاع الرؤية
+  </p>
+
+  <h3>
+    المرحلة المتوسطة
+  </h3>
+
+</footer>
+
+
+<script>
+
+/* زر بداية الرحلة */
+function startJourney(){
+
+  document.getElementById("journey").scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
+
+/* حساب الاختبار */
+function checkQuiz(){
+
+  let score = 0;
+
+  for(let i = 1; i <= 15; i++){
+
+    let answer = document.querySelector(
+      'input[name="q' + i + '"]:checked'
+    );
+
+    if(answer && answer.value === "correct"){
+      score++;
+    }
+
+  }
+
+  let message = "";
+
+  if(score === 15){
+
+    message =
+      "🏆 مذهلة! أنتِ خبيرة فضاء! 🚀🌌";
+
+  }else if(score >= 12){
+
+    message =
+      "🌟 رائع جدًا! معلوماتك عن الفضاء ممتازة!";
+
+  }else if(score >= 9){
+
+    message =
+      "🚀 ممتاز! لديكِ معلومات جميلة عن الفضاء!";
+
+  }else if(score >= 6){
+
+    message =
+      "✨ جيد! واصلي التعلم والاستكشاف!";
+
+  }else{
+
+    message =
+      "🌙 حاولي مرة أخرى واكتشفي المزيد عن الفضاء!";
+
+  }
+
+  document.getElementById("result").innerHTML =
+    "🎉 نتيجتك: " + score + " من 15<br>" + message;
+
+}
+
+</script>
+
+</body>
+</html>
